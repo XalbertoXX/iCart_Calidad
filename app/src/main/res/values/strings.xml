@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">iCart</string>
+    <string name="NuevaLista">Nueva Lista</string>
+    <string name="VerLista">Ver Lista</string>
+    <string name="Categorias">Categorías</string>
+    <string name="Lista">Tu lista</string>
+    <string name="mensajeInicial">Tu lista de la compra</string>
+    <string name="descripcionLongo">Logo pantalla inical</string>
+    <string name="btnBorrartodo">Borrar todo</string>
+    <string name="tvInfoTitle">¿Cómo usar iCart?</string>
+</resources>
