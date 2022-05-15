@@ -8,4 +8,8 @@
     <string name="descripcionLongo">Logo pantalla inical</string>
     <string name="btnBorrartodo">Borrar todo</string>
     <string name="tvInfoTitle">¿Cómo usar iCart?</string>
+    <string name="feedback">FeedBack</string>
+    <string name="showInfoFeedBack">Here in iCart we have a compromise with our clients. so please, if you have any feedback we will be glad to hear it from you</string>
+    <string name="introduceComments">Introduce your comments</string>
+    <string name="submit">Submit</string>
 </resources>
