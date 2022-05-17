@@ -133,8 +133,14 @@ class ShoppingList() {
 
         val listadoCategorias = arrayOf<Category>(frutas, verduras, ternera, pollo, cerdo, lacteos, queso, pasta, fiambre, zumos, bano, limpieza)
         var listaCompra = ArrayList<String>()
-        fun addToList(elem: String) {
-            this.listaCompra.add(elem)
+        fun addToList(elem: String) : Boolean {
+            if (!this.listaCompra.contains(elem)) {
+                this.listaCompra.add(elem)
+                return true
+            }
+            else{
+                return false
+            }
         }
     }
 

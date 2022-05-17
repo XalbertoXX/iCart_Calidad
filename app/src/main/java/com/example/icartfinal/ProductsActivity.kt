@@ -38,15 +38,22 @@ class ProductsActivity : AppCompatActivity() {
     }
 
     fun onRecyclerClick(position: Int, listaProductos: Array<Product>) {
+        val isInList = ShoppingList.addToList(listaProductos[position].nombre)
         val alertDialogBuilder = AlertDialog.Builder(this)
         alertDialogBuilder.setTitle("¿Desea añadirlo?")
         alertDialogBuilder.setPositiveButton(android.R.string.yes) { dialog, which ->
-            Toast.makeText(applicationContext, "Producto Añadido", Toast.LENGTH_SHORT).show()
-            ShoppingList.addToList(listaProductos[position].nombre)
-            val vibratorService = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-            vibratorService.vibrate(200)
-            val numProduct = findViewById<TextView>(R.id.numProducts2)
-            numProduct.text = ShoppingList.listaCompra.size.toString()
+            if (isInList) {
+                Toast.makeText(applicationContext, "Producto Añadido", Toast.LENGTH_SHORT).show()
+                ShoppingList.addToList(listaProductos[position].nombre)
+                val vibratorService = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+                vibratorService.vibrate(200)
+                val numProduct = findViewById<TextView>(R.id.numProducts2)
+                numProduct.text = ShoppingList.listaCompra.size.toString()
+            }
+            else{
+                Toast.makeText(this, "Ya esta en la lista", Toast.LENGTH_LONG).show()
+            }
+
         }
         alertDialogBuilder.setNegativeButton(android.R.string.no) { dialog, which ->
             val intent = Intent(this, MainActivity::class.java)
