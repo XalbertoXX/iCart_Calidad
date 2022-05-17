@@ -7,6 +7,8 @@ import android.os.Bundle
 import android.os.Vibrator
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -36,11 +38,22 @@ class ProductsActivity : AppCompatActivity() {
     }
 
     fun onRecyclerClick(position: Int, listaProductos: Array<Product>) {
-        ShoppingList.addToList(listaProductos[position].nombre)
-        val vibratorService = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-        vibratorService.vibrate(200)
-        val numProduct = findViewById<TextView>(R.id.numProducts2)
-        numProduct.text = ShoppingList.listaCompra.size.toString()
+        val alertDialogBuilder = AlertDialog.Builder(this)
+        alertDialogBuilder.setTitle("¿Desea añadirlo?")
+        alertDialogBuilder.setPositiveButton(android.R.string.yes) { dialog, which ->
+            Toast.makeText(applicationContext, "Producto Añadido", Toast.LENGTH_SHORT).show()
+            ShoppingList.addToList(listaProductos[position].nombre)
+            val vibratorService = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+            vibratorService.vibrate(200)
+            val numProduct = findViewById<TextView>(R.id.numProducts2)
+            numProduct.text = ShoppingList.listaCompra.size.toString()
+        }
+        alertDialogBuilder.setNegativeButton(android.R.string.no) { dialog, which ->
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+        alertDialogBuilder.show()
+
     }
 
     override fun onResume() {
