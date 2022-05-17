@@ -18,7 +18,7 @@ class FeedBackActivity : AppCompatActivity() {
         btnIntroText.setOnClickListener { btnIntroText.text = btnIntroText.text }
 
         btnSubmit.setOnClickListener {
-            val intent = Intent(this, ShoppingListActivity::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             Toast.makeText(this, "Submit Sent :D", Toast.LENGTH_SHORT).show()
             startActivity(intent)
         }

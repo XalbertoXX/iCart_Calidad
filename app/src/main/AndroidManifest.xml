@@ -17,6 +17,9 @@
             android:name=".ShoppingListActivity"
             android:exported="true" />
         <activity
+            android:name=".FeedBackActivity"
+            android:exported="true" />
+        <activity
             android:name=".ProductsActivity"
             android:exported="true" />
         <activity
