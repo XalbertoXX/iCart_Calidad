@@ -1,6 +1,7 @@
 package com.example.icartfinal
 
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -38,11 +39,11 @@ class ProductsActivity : AppCompatActivity() {
     }
 
     fun onRecyclerClick(position: Int, listaProductos: Array<Product>) {
-        val isInList = ShoppingList.addToList(listaProductos[position].nombre)
+        val isNotInList = ShoppingList.addToList(listaProductos[position].nombre)
         val alertDialogBuilder = AlertDialog.Builder(this)
         alertDialogBuilder.setTitle("¿Desea añadirlo?")
-        alertDialogBuilder.setPositiveButton(android.R.string.yes) { dialog, which ->
-            if (isInList) {
+        alertDialogBuilder.setPositiveButton(android.R.string.ok) { dialog, which ->
+            if (isNotInList) {
                 Toast.makeText(applicationContext, "Producto Añadido", Toast.LENGTH_SHORT).show()
                 ShoppingList.addToList(listaProductos[position].nombre)
                 val vibratorService = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
@@ -53,14 +54,10 @@ class ProductsActivity : AppCompatActivity() {
             else{
                 Toast.makeText(this, "Ya esta en la lista", Toast.LENGTH_LONG).show()
             }
-
         }
-        alertDialogBuilder.setNegativeButton(android.R.string.no) { dialog, which ->
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+        alertDialogBuilder.setNegativeButton(android.R.string.cancel){ dialog, which ->
         }
         alertDialogBuilder.show()
-
     }
 
     override fun onResume() {

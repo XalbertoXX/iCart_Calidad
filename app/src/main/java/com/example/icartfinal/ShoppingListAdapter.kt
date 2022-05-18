@@ -9,7 +9,7 @@ import androidx.core.os.persistableBundleOf
 import androidx.recyclerview.widget.RecyclerView
 
 class ShoppingListAdapter(
-    val listaCompra:ArrayList<String>,
+    listaCompra:ArrayList<String>,
     val listener: ShoppingListActivity,
     val onClickDelete: (Int) -> Unit
 ): RecyclerView.Adapter<ShoppingListAdapter.ViewHolder>() {
@@ -29,8 +29,6 @@ class ShoppingListAdapter(
                 listener.onRecyclerClick(position)
             }
         }
-
-
 
         fun bindName(nombre: String, position: Int){
             itemTitle.text = nombre
@@ -57,8 +55,4 @@ class ShoppingListAdapter(
         lista = listaCompra
         notifyDataSetChanged()
     }
-}
-
-public interface OnItemClickListener3 {
-    fun onRecyclerClick(position: Int)
 }

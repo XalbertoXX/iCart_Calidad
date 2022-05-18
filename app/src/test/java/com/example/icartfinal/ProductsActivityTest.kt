@@ -1,22 +1,19 @@
 package com.example.icartfinal
 
-import io.mockk.MockKAnnotations
-import io.mockk.impl.annotations.RelaxedMockK
-import org.junit.Assert.*
-import org.junit.Before
+
+import junit.framework.Assert.assertFalse
+import org.junit.Test
 
 class ProductsActivityTest {
 
-    @RelaxedMockK
-    private lateinit var product: Product
+    @Test
+    fun addProductTest() {
+        assert(true) { ShoppingList.addToList("Estropajo") }
+    }
 
-    lateinit var productAdapter: ProductAdapter
-
-    lateinit var productActivity: ShoppingListActivity
-
-    @Before
-    fun onBefore(){
-        MockKAnnotations.init(this)
-        //productAdapter = ProductAdapter(productActivity.)
+    @Test
+    fun addSameProductTest() {
+        ShoppingList.addToList("Manzana")
+        assertFalse(ShoppingList.addToList("Manzana"))
     }
 }
