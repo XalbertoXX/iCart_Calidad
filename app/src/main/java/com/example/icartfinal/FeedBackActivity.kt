@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class FeedBackActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?): Boolean {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_feedback)
 
@@ -22,6 +22,6 @@ class FeedBackActivity : AppCompatActivity() {
             Toast.makeText(this, "Submit Sent :D", Toast.LENGTH_SHORT).show()
             startActivity(intent)
         }
-        return true
+        return
     }
 }
